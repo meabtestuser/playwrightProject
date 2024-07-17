@@ -1,23 +1,31 @@
 import { defineConfig, devices } from '@playwright/test';
 import dotenv from "dotenv";
+import {config} from "dotenv";
 
 
-dotenv.config({
-  path:'.//env//.env.${process.env.ENV}',
-});
-
+//./env/.env.${process.env.ENV}',
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
  */
- require('dotenv').config();
+ //require('dotenv').config();
 
-
+ if (process.env.URL){
+  console.log('ENV:',process.env.URL);
+  config(Options: { 
+    path= './env/.env.${process.env.URL}',
+  override:true,
+ });
+ else
+ {
+  config();
+ }
+  
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
-  testDir: './src/tests',
+  testDir: 'src/tests',
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */

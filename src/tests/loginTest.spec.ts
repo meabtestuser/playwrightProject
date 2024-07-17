@@ -1,6 +1,8 @@
 import {test} from "@playwright/test";
 import LoginPage from "../pages/LoginPage";
-import env from "../env/";
+import { Config } from "@playwright/test";
+import { config } from "process";
+
 
 
 
@@ -9,13 +11,16 @@ import env from "../env/";
 test("LoginPage_TestCase",async({ page }) => {
 
     //const loginPage = new LoginPage(page);
-    console.log(process.env.URL);
-    console.log(process.env.userid);
-    console.log(process.env.password);
+     require('dotenv').config({path: '.env'});
+    
+    console.log(process.env.NODE_ENV);
+    console.log(process.env.userid!);
+    console.log(process.env.password!);
+   
 
     // await loginPage.navigateToLoginPage();
-    // await loginPage.InputUsername(process.env.userid);
-    // await loginPage.InputPassword();
+    // await loginPage.InputUsername(process.env.userid!);
+    // await loginPage.InputPassword(process.env.password!);
     // const homepage = await loginPage.clickLoginButton();
     // await homepage.expectMarketingPreferenceDialogTobeVisible();
 
